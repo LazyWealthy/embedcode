@@ -1,0 +1,11 @@
+{
+    "script": `
+        <div id='container' style='
+        width:280px; height:250px;
+        margin-left: 15px; background:#F6F6F6; overflow:hidden; display:flex; justify-content:center; align-items:center;
+        '>
+            <img src='https://1drv.ms/i/c/cda7c9b49e89a535/IQSA2sYnIcYdT562ebt-BarhAVTs3hzSW-e6YpuN0DyShl4' width='100%'
+                height='100%' id='placeholder'>
+        </div>
+    `
+};
