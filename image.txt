@@ -1,6 +1,6 @@
 <body>
     <div id="container"></div>
-        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)">
+        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)" onload="noColor()">
         <div id="noteBlock">
             <b id="noteText">Note:</b>&nbsp;${dNoteText}
         </div>
@@ -34,16 +34,21 @@
     </style>
 
     <script>
-
+        let container = document.getElementById("container");
+        
         function reloadImage(img) {
             setTimeout(() => {
                 img.src = img.src + "?retry=" + new Date().getTime();
             }, 1000);
         }
 
+        function noColor(){
+            container.style.background = "#ffffff";
+        }
+
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
         if (!isMobile) {
-            let container = document.getElementById("container");
+            
             container.style.width = "${dWidth}";
             container.style.height = "${dHeight}";
             container.style.marginLeft = "${dMargin-left}";
