@@ -56,7 +56,10 @@
 
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
         if (!isMobile) {
-            document.getElementById("container").style.cssText = "width: ${dWidth}; height: ${dHeight}; margin-left: ${dMargin-left};";
+            let container = document.getElementById("container");
+            container.style.width = "${dWidth}";
+            container.style.height = "${dHeight}";
+            container.style.marginLeft = "${dMargin-left}";            
             document.getElementById("noteBlock").style.display = "flex";
             document.getElementById("noteText").style.display = "flex";
         }
