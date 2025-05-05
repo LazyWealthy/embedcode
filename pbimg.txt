@@ -62,7 +62,7 @@
             }, 1000);
         }
 
-        const isMobile = false;
+        const isMobile = true;
         if (!isMobile) {
             document.getElementById("placeholder").style.cssText = "width: 1px; height: 1px; position: absolute;";
             document.getElementById("container").style.cssText = "width: ${dWidth}; height: ${dHeight}; margin-left: ${dMargin-left};";
