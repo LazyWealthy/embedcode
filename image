@@ -1,0 +1,66 @@
+<body>
+    <div id="container">
+        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)">
+        <div id="noteBlock">
+            <b id="noteText">Note:</b>&nbsp;${dNoteText}
+        </div>
+    </div>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #container {
+            width: "${mWidth}";
+            height: "${mHeight}";
+            margin-left: "${mMargin-left}";
+            background: #f6f6f6;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #noteBlock {
+            width: 100%;
+            height: 60px;
+            display: none;
+            position: absolute;
+            bottom: 0;
+            z-index: 999;
+            background: #fff;
+            color: #000;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            align-items: center;
+            justify-content: left;
+        }
+
+        #noteText {
+            text-indent: 1em;
+            display: inline-block;
+        }
+    </style>
+
+    <script>
+
+        function reloadImage(img) {
+            setTimeout(() => {
+                img.src = img.src + "?retry=" + new Date().getTime();
+            }, 1000);
+        }
+
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
+        if (!isMobile) {
+            document.getElementById("placeholder").style.cssText = "width: 1px; height: 1px; position: absolute;";
+            document.getElementById("container").style.cssText = "width: ${dWidth}; height: ${dHeight}; margin-left: ${dMargin-left};";
+            document.getElementById("noteBlock").style.display = "flex";
+            document.getElementById("noteText").style.display = "flex";
+        }
+
+    </script>
+</body>
