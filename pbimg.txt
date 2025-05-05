@@ -1,0 +1,69 @@
+<body>
+    <div id="container">
+        <img id="placeholder" width="100%" height="100%" alt="Too slow for SEO"
+            src="${imgsrc}">
+        <iframe id="dashboard" width="640px" height="625px" title="Too slow for SEO"
+            src="https://app.powerbi.com/view?r=eyJrIjoiMTk4YjkwNWQtZWVlYi00OTZiLTg4ZTgtYmM3ZWFmNDVhOWI1IiwidCI6IjdjMDM5NTM0LThlNDYtNDMxYy1hODRjLWMzMDkyYTQzODRmOCIsImMiOjEwfQ%3D%3D&pageName=a1625466f7d3fcd73988"
+            frameborder="0" allowfullscreen></iframe>
+        <div id="noteBlock">
+            <b id="noteText">Note:</b>&nbsp;Drag slicer bar to change date range and see how data changes.
+        </div>
+    </div>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #container {
+            width: 280px;
+            height: 240px;
+            margin-left: 15px;
+            background: #f6f6f6;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dashboard {
+            display: none;
+            width: 640px;
+            height: 625px;
+        }
+
+        #noteBlock {
+            width: 100%;
+            height: 60px;
+            display: none;
+            position: absolute;
+            bottom: 0;
+            z-index: 999;
+            background: #fff;
+            color: #000;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            align-items: center;
+            justify-content: left;
+        }
+
+        #noteText {
+            text-indent: 1em;
+            display: inline-block;
+        }
+    </style>
+
+    <script>
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
+        if (!isMobile) {
+            document.getElementById("placeholder").style.cssText = "width: 1px; height: 1px; position: absolute;";
+            document.getElementById("container").style.cssText = "width: 640px; height: 625px; margin-left: 0;";
+            document.getElementById("dashboard").style.display = "block";
+            document.getElementById("noteBlock").style.display = "flex";
+            document.getElementById("noteText").style.display = "flex";
+        }
+    </script>
+</body>
