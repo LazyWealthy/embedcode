@@ -1,10 +1,8 @@
 <body>
     <div id="container">
-        <img id="placeholder" width="100%" height="100%" alt="Too slow for SEO"
-            src="${imgsrc}">
-        <iframe id="dashboard" width="640px" height="625px" title="Too slow for SEO"
-            src="https://app.powerbi.com/view?r=eyJrIjoiMTk4YjkwNWQtZWVlYi00OTZiLTg4ZTgtYmM3ZWFmNDVhOWI1IiwidCI6IjdjMDM5NTM0LThlNDYtNDMxYy1hODRjLWMzMDkyYTQzODRmOCIsImMiOjEwfQ%3D%3D&pageName=a1625466f7d3fcd73988"
-            frameborder="0" allowfullscreen></iframe>
+        <img id="placeholder" width="100%" height="100%" alt="Too slow for SEO" src="${imgsrc}">
+        <iframe id="dashboard" width="640px" height="625px" title="Too slow for SEO" src="${dashsrc}" frameborder="0"
+            allowfullscreen></iframe>
         <div id="noteBlock">
             <b id="noteText">Note:</b>&nbsp;Drag slicer bar to change date range and see how data changes.
         </div>
