@@ -7,7 +7,7 @@
             overflow: hidden;
         }
 
-        #container {
+        #placeholder {
             width: "${mWidth}";
             height: "${mHeight}";
             margin-left: "${mMargin-left}";
