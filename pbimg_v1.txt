@@ -18,9 +18,9 @@
         }
 
         #container {
-            width: "${mWidth}";
-            height: "${mHeight}";
-            margin-left: "${mMargin-left}";
+            width: ${mWidth};
+            height: ${mHeight};
+            margin-left: ${mMargin-left};
             background: #f6f6f6;
             overflow: hidden;
             display: flex;
@@ -30,8 +30,8 @@
 
         #dashboard {
             display: none;
-            width: "${dWidth}";
-            height: "${dHeight}";
+            width: ${dWidth};
+            height: ${dHeight};
         }
 
         #noteBlock {
