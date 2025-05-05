@@ -1,9 +1,10 @@
 <body>
-    <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)">
-    <div id="noteBlock">
-        <b id="noteText">Note:</b>&nbsp;${dNoteText}
+    <div id="container" width="${mWidth}" height="${mHeight}" margin-left="${mMargin-left}";>
+        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)">
+        <div id="noteBlock">
+            <b id="noteText">Note:</b>&nbsp;${dNoteText}
+        </div>
     </div>
-
     <style>
         html,
         body {
@@ -13,9 +14,6 @@
         }
 
         #container {
-            width: "${mWidth}";
-            height: "${mHeight}";
-            margin-left: "${mMargin-left}";
             background: #f6f6f6;
             overflow: hidden;
             display: flex;
@@ -57,7 +55,7 @@
             let container = document.getElementById("container");
             container.style.width = "${dWidth}";
             container.style.height = "${dHeight}";
-            container.style.marginLeft = "${dMargin-left}";            
+            container.style.marginLeft = "${dMargin-left}";
             document.getElementById("noteBlock").style.display = "flex";
             document.getElementById("noteText").style.display = "flex";
         }
