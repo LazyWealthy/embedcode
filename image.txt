@@ -14,18 +14,9 @@
         }
 
         #container {
-            width: 290px;
-            height: 145px;
-            margin-left: 15px;
-            background: #f6f6f6;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #placeholder {
-            margin-left: 15px;
+            width: "${mWidth}";
+            height: "${mHeight}";
+            margin-left: "${mMargin-left}";
             background: #f6f6f6;
             overflow: hidden;
             display: flex;
