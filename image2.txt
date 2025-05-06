@@ -47,6 +47,9 @@
                 noteBlock.style.fontSize = noteFont + "px";
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
+            } else {
+                const normalHeight = isMobile ? ([$mHeight]) : ([$dHeight]);
+                container.style.height = normalHeight + "px";
             }
         }
 
