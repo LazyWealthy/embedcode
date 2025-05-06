@@ -7,7 +7,7 @@
             allowfullscreen></iframe>
         <div id="noteBlock" style="display: none; width: 100%; position: absolute; bottom: 0; z-index: 999; background: #fff; 
             color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left;">
-            <b id="noteText">Note:</b><span id="footer"></span>
+            <b id="noteText">Note:</b>&nbsp;<span id="footer"></span>
         </div>
     </div>
     <style>
@@ -42,6 +42,7 @@
             dashboard.style.display = "block";
         } else {
             noteBlock.style.marginLeft = "[$mMargin-left]px";
+            dashboard.style.display = "none";
         }
 
         function loadFooter() {
