@@ -46,7 +46,7 @@
             container.style.background = "#ffffff";
             if (footnote) {
                 const noteFont = isMobile ? 12 : 14;
-                const noteHeight = isMobile ? 30 : 60;
+                const noteHeight = isMobile ? 30 : 0;
                 const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight] + noteHeight);
                 container.style.height = totalHeight + "px";
                 noteBlock.style.height = noteHeight + "px";
