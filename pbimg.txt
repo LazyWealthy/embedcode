@@ -55,7 +55,7 @@
                 noteBlock.style.fontSize = noteFont + "px";
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
-                noteText.style.innerHTML += footnote;
+                noteText.innerHTML += footnote;
             } else {
                 const normalHeight = isMobile ? ([$mHeight]) : ([$dHeight]);
                 container.style.height = normalHeight + "px";
