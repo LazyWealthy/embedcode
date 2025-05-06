@@ -1,51 +1,21 @@
 <body>
-    <div id="container">
-        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)">
-        <iframe id="dashboard" width="${dWidth}" height="${dHeight}" src="${dashsrc}" frameborder="0"
+    <div id="container"
+        style="display: absolute; overflow:hidden; display:flex; justify-content:center; align-items:center;">
+        <img id="placeholder" width="100%" height="100%" src="[$imgsrc]" onerror="reloadImage(this)"
+            onload="loadFooter()">
+        <iframe id="dashboard" width="[$dWidth]" height="[$dHeight]" src="[$dashsrc]" frameborder="0"
             allowfullscreen></iframe>
-        <div id="noteBlock">
-            <b id="noteText">Note:</b>&nbsp;${dNoteText}
+        <div id="noteBlock" style="display: none; width: 100%; position: absolute; bottom: 0; z-index: 999; background: #fff; 
+            color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left;">
+            <b id="noteText">Note:</b>&nbsp;[$footnote]
         </div>
     </div>
-
     <style>
         html,
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
-        }
-
-        #container {
-            width: "${mWidth}";
-            height: "${mHeight}";
-            margin-left: "${mMargin-left}";
-            background: #f6f6f6;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #dashboard {
-            display: none;
-            width: "${dWidth}";
-            height: "${dHeight}";
-        }
-
-        #noteBlock {
-            width: 100%;
-            height: 60px;
-            display: none;
-            position: absolute;
-            bottom: 0;
-            z-index: 999;
-            background: #fff;
-            color: #000;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            align-items: center;
-            justify-content: left;
         }
 
         #noteText {
@@ -55,20 +25,47 @@
     </style>
 
     <script>
+        const container = document.getElementById("container");
+        const placeholder = document.getElementById("placeholder");
+        const dashboard = document.getElementById("dashboard");
+        const noteBlock = document.getElementById("noteBlock");
+        const noteText = document.getElementById("noteText");
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
+        const footnote = "[$footnote]";
 
-        function reloadImage(img) {
-            setTimeout(() => {
-                img.src = img.src + "?retry=" + new Date().getTime();
-            }, 1000);
+        if (!isMobile) {
+            container.style.width = "[$dWidth]px";
+            container.style.marginLeft = "[$dMargin-left]px";
+            placeholder.style.cssText = "width: 1px; height: 1px; position: absolute;";
+            dashboard.style.display = "block";
+        } else {
+            noteBlock.style.marginLeft = "[$mMargin-left]px";
         }
 
-        const isMobile = true;
-        if (!isMobile) {
-            document.getElementById("placeholder").style.cssText = "width: 1px; height: 1px; position: absolute;";
-            document.getElementById("container").style.cssText = "width: ${dWidth}; height: ${dHeight}; margin-left: ${dMargin-left};";
-            document.getElementById("dashboard").style.display = "block";
-            document.getElementById("noteBlock").style.display = "flex";
-            document.getElementById("noteText").style.display = "flex";
+        function loadFooter() {
+            container.style.background = "#ffffff";
+            if (footnote) {
+                const noteFont = isMobile ? 12 : 14;
+                const noteHeight = isMobile ? 30 : 60;
+                const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight] + noteHeight);
+                container.style.height = totalHeight + "px";
+                noteBlock.style.height = noteHeight + "px";
+                noteBlock.style.fontSize = noteFont + "px";
+                noteBlock.style.display = "flex";
+                noteText.style.display = "flex";
+            } else {
+                const normalHeight = isMobile ? ([$mHeight]) : ([$dHeight]);
+                container.style.height = normalHeight + "px";
+            }
+        }
+
+        let retryCount = 0;
+        const maxRetries = 3;
+
+        function reloadImage(img) {
+            if (retryCount++ < maxRetries) {
+                setTimeout(() => img.src += `?retry=${Date.now()}`, 1000);
+            }
         }
 
     </script>
