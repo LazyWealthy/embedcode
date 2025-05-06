@@ -7,7 +7,7 @@
             allowfullscreen></iframe>
         <div id="noteBlock" style="display: none; width: 100%; position: absolute; bottom: 0; z-index: 999; background: #fff; 
             color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left;">
-            <b id="noteText">Note:</b>&nbsp;[$footnote]
+            <b id="noteText">Note:</b>&nbsp;
         </div>
     </div>
     <style>
@@ -31,7 +31,9 @@
         const noteBlock = document.getElementById("noteBlock");
         const noteText = document.getElementById("noteText");
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
-        const footnote = "[$footnote]";
+        const dFootnote = "[$dFootnote]";
+        const mFootnote = "[$mFootnote]";
+        const footnote = isMobile ? mFootnote : dFootnote;
 
         if (!isMobile) {
             container.style.width = "[$dWidth]px";
@@ -46,13 +48,14 @@
             container.style.background = "#ffffff";
             if (footnote) {
                 const noteFont = isMobile ? 12 : 14;
-                const noteHeight = isMobile ? 30 : 0;
-                const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight] + noteHeight);
+                const noteHeight = isMobile ? 30 : 60;
+                const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight]);
                 container.style.height = totalHeight + "px";
                 noteBlock.style.height = noteHeight + "px";
                 noteBlock.style.fontSize = noteFont + "px";
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
+                noteText.style.innerHTML += footnote;
             } else {
                 const normalHeight = isMobile ? ([$mHeight]) : ([$dHeight]);
                 container.style.height = normalHeight + "px";
