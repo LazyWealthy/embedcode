@@ -4,7 +4,7 @@
             onload="loadFooter()">
         <div id="noteBlock"
             style="display: none; width: 100%; position: absolute; bottom: 0; z-index: 999; background: #fff; 
-            color: #000; font-family: 'Open Sans', sans-serif; font-size: 14px; align-items: center; justify-content: left;">
+            color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left;">
             <b id="noteText">Note:</b>&nbsp;[$footnote]
         </div>
     </div>
@@ -37,12 +37,14 @@
 
         function loadFooter() {
             container.style.background = "#ffffff";
+            const noteFont = isMobile ? 12 : 14;
             const noteHeight = isMobile ? 30 : 60;
             const totalHeight = isMobile ? ([$mHeight] + noteHeight) + "px" : ([$dHeight] + noteHeight) + "px";
-            console.log("totalHeight", totalHeight);
+            
             if (footnote) {
                 container.style.height = totalHeight;
-                noteBlock.style.height = noteHeight;
+                noteBlock.style.height = noteHeight + "px";
+                noteBlock.style.fontSize = noteFont + "px";
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
             }
