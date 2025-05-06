@@ -34,15 +34,14 @@
             container.style.marginLeft = "[$dMargin-left]px";
         }
 
-        const noteFont = isMobile ? 12 : 14;
-        const noteHeight = isMobile ? 30 : 60;
-        const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight] + noteHeight);
-        console.log(totalHeight);
-
         function loadFooter() {
             container.style.background = "#ffffff";
             if (footnote) {
-                container.style.height = totalHeight + "px";
+                const noteFont = isMobile ? 12 : 14;
+                const noteHeight = isMobile ? 30 : 60;
+                const totalHeight = isMobile ? ([$mHeight] + noteHeight) + "px" : ([$dHeight] + noteHeight) + "px";
+                console.log(totalHeight);
+                container.style.height = totalHeight;
                 noteBlock.style.height = noteHeight + "px";
                 noteBlock.style.fontSize = noteFont + "px";
                 noteBlock.style.display = "flex";
@@ -56,7 +55,7 @@
         function reloadImage(img) {
             if (retryCount++ < maxRetries) {
                 setTimeout(() => img.src += `?retry=${Date.now()}`, 1000);
-            } 
+            }
         }
 
     </script>
