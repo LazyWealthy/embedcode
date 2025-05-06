@@ -59,6 +59,7 @@
                 footer.innerHTML += " " + footnote;
             } else {
                 const normalHeight = isMobile ? ([$mHeight]) : ([$dHeight]);
+                container.style.height = normalHeight + "px";
             }
         }
 
