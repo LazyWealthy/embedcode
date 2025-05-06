@@ -1,10 +1,11 @@
 <body>
     <div id="container">
-        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)" onload="loadFooter()">
+        <img id="placeholder" width="100%" height="100%" src="[imgsrc]" onerror="reloadImage(this)"
+            onload="loadFooter()">
         <div id="noteBlock"
             style="display: none; width: 100%; height: 60px; position: absolute; bottom: 0; z-index: 999; background: #fff; 
             color: #000; font-family: 'Open Sans', sans-serif; font-size: 14px; align-items: center; justify-content: left;">
-            <b id="noteText">Note:</b>&nbsp;${footnote}
+            <b id="noteText">Note:</b>&nbsp;[footnote]
         </div>
     </div>
     <style>
@@ -26,28 +27,28 @@
         const noteBlock = document.getElementById("noteBlock");
         const noteText = document.getElementById("noteText");
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
-        const footnote = "${footnote}";
-        let footerHeight = 60; 
+        const footnote = "[footnote]";
+        let footerHeight = 0;
 
-        function reloadImage(img) {
-            setTimeout(() => {
-                img.src = img.src + "?retry=" + new Date().getTime();
-            }, 1000);
+        if (!isMobile) {
+            container.style.width = "[dWidth]px";
+            container.style.height = "[dHeight]px";
+            container.style.marginLeft = "[dMargin-left]px";
         }
 
         function loadFooter() {
             container.style.background = "#ffffff";
-            if(footnote) {
+            if (footnote) {
+                footerHeight = isMobile ? 30 : 60;
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
             }
         }
 
-        
-        if (!isMobile) {
-            container.style.width = "${dWidth}px";
-            container.style.height = "${dHeight}px";
-            container.style.marginLeft = "${dMargin-left}px";
+        function reloadImage(img) {
+            setTimeout(() => {
+                img.src = img.src + "?retry=" + new Date().getTime();
+            }, 1000);
         }
 
     </script>
