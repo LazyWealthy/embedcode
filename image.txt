@@ -39,7 +39,7 @@
             if (footnote) {
                 const noteFont = isMobile ? 12 : 14;
                 const noteHeight = isMobile ? 30 : 60;
-                const totalHeight = isMobile ? ([$mHeight] + noteHeight) + "px" : ([$dHeight] + noteHeight) + "px";
+                const totalHeight = isMobile ? ([$mHeight] + 30) + "px" : ([$dHeight] + 60) + "px";
                 console.log(totalHeight);
                 container.style.height = totalHeight;
                 noteBlock.style.height = noteHeight + "px";
