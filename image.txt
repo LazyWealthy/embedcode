@@ -38,7 +38,8 @@
         function loadFooter() {
             container.style.background = "#ffffff";
             const totalHeight = isMobile ? ([$mHeight] + 30) : ([$dHeight] + 60);
-            if (footnote) {    
+            console.log("totalHeight", totalHeight);
+            if (footnote) {
                 container.style.height = totalHeight;
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
