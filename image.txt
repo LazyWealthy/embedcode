@@ -40,7 +40,7 @@
             const totalHeight = isMobile ? ([$mHeight] + 30) : ([$dHeight] + 60);
             console.log("totalHeight", totalHeight);
             if (footnote) {
-                container.style.height = totalHeight;
+                container.style.height = totalHeight.toString() + "px";
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
             }
