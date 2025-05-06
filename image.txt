@@ -41,7 +41,6 @@
             console.log("totalHeight", totalHeight);
             if (footnote) {
                 container.style.height = totalHeight.toString() + "px";
-                container.style.height = "500px";
                 noteBlock.style.display = "flex";
                 noteText.style.display = "flex";
             }
