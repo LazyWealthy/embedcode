@@ -34,12 +34,12 @@
             container.style.marginLeft = "[$dMargin-left]px";
         }
 
+        const noteFont = isMobile ? 12 : 14;
+        const noteHeight = isMobile ? 30 : 60;
+        const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight] + noteHeight);
+
         function loadFooter() {
             container.style.background = "#ffffff";
-            const noteFont = isMobile ? 12 : 14;
-            const noteHeight = isMobile ? 30 : 60;
-            const totalHeight = isMobile ? ([$mHeight] + 30) : ([$dHeight] + 60);
-
             if (footnote) {
                 container.style.height = totalHeight + "px";
                 noteBlock.style.height = noteHeight + "px";
