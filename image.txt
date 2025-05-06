@@ -1,8 +1,11 @@
 <body>
     <div id="container">
-        <img id="placeholder" width="100%" height="100%" src="${imgsrc}" onerror="reloadImage(this)" onload="noColor()">
-        <div id="noteBlock">
-            <b id="noteText">Note:</b>&nbsp;${dNoteText}
+        <img id="placeholder" width="100%" height="100%" src="[$imgsrc]" onerror="reloadImage(this)"
+            onload="loadFooter()">
+        <div id="noteBlock"
+            style="display: none; width: 100%; position: absolute; bottom: 0; z-index: 999; background: #fff; 
+            color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left;">
+            <b id="noteText">Note:</b>&nbsp;[$footnote]
         </div>
     </div>
     <style>
@@ -13,21 +16,6 @@
             overflow: hidden;
         }
 
-        #noteBlock {
-            width: 100%;
-            height: 60px;
-            display: none;
-            position: absolute;
-            bottom: 0;
-            z-index: 999;
-            background: #fff;
-            color: #000;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            align-items: center;
-            justify-content: left;
-        }
-
         #noteText {
             text-indent: 1em;
             display: inline-block;
@@ -35,26 +23,37 @@
     </style>
 
     <script>
-        let container = document.getElementById("container");
+        const container = document.getElementById("container");
+        const noteBlock = document.getElementById("noteBlock");
+        const noteText = document.getElementById("noteText");
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
+        const footnote = "[$footnote]";
+
+        if (!isMobile) {
+            container.style.width = "[$dWidth]px";
+            container.style.height = "[$dHeight]px";
+            container.style.marginLeft = "[$dMargin-left]px";
+        }
+
+        function loadFooter() {
+            container.style.background = "#ffffff";
+            const noteFont = isMobile ? 12 : 14;
+            const noteHeight = isMobile ? 30 : 60;
+            const totalHeight = isMobile ? ([$mHeight] + 30) : ([$dHeight] + 60);
+            
+            if (footnote) {
+                container.style.height = totalHeight + "px";
+                noteBlock.style.height = noteHeight + "px";
+                noteBlock.style.fontSize = noteFont + "px";
+                noteBlock.style.display = "flex";
+                noteText.style.display = "flex";
+            }
+        }
 
         function reloadImage(img) {
             setTimeout(() => {
                 img.src = img.src + "?retry=" + new Date().getTime();
             }, 1000);
-        }
-
-        function noColor() {
-            container.style.background = "#ffffff";
-        }
-
-        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
-        if (!isMobile) {
-
-            container.style.width = "${dWidth}";
-            container.style.height = "${dHeight}";
-            container.style.marginLeft = "${dMargin-left}";
-            document.getElementById("noteBlock").style.display = "flex";
-            document.getElementById("noteText").style.display = "flex";
         }
 
     </script>
