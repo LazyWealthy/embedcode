@@ -1,14 +1,16 @@
 <body>
-    <div id="container"
-        style="display: absolute; overflow:hidden; display:flex; justify-content:center; align-items:center;">
-        <img id="placeholder" width="100%" height="100%" src="[$imgsrc]" onerror="reloadImage(this)" onload="clearBg()">
-        <iframe id="dashboard" display="none" width="[$dWidth]" height="[$dHeight]" src="[$dashsrc]" frameborder="0"
-            allowfullscreen></iframe>
-        <div id="noteBlock" style="display: none; width: 100%; position: absolute; bottom: 0; z-index: 999; background: #fff; 
-            color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left;">
-            <b id="noteText">Note:</b>&nbsp;<span id="footer"></span>
-        </div>
+    <div id="container" style="overflow: hidden; justify-content: center; align-items: center;">
+        <img id="placeholder" style="width: 100%; height: 100%;"
+            src="https://1drv.ms/i/c/cda7c9b49e89a535/IQSrhkMIr5T_S5KCtWsympCBAVyh5y5mHEG777702Z2XRuc"
+            onerror="reloadImage(this)" onload="clearBg()">
+        <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen
+            src="https://app.powerbi.com/view?r=eyJrIjoiMTk4YjkwNWQtZWVlYi00OTZiLTg4ZTgtYmM3ZWFmNDVhOWI1IiwidCI6IjdjMDM5NTM0LThlNDYtNDMxYy1hODRjLWMzMDkyYTQzODRmOCIsImMiOjEwfQ%3D%3D&pageName=a1625466f7d3fcd73988">
+        </iframe>
     </div>
+    <div id="noteBlock" style="display: none;">
+        <b id="noteText"></b>&nbsp;<span id="footer"></span>
+    </div>
+
     <style>
         html,
         body {
@@ -18,7 +20,7 @@
         }
 
         #noteText {
-            text-indent: 1em;
+            text-indent: 0.5em;
             display: inline-block;
         }
     </style>
@@ -29,39 +31,36 @@
         const dashboard = document.getElementById("dashboard");
         const noteBlock = document.getElementById("noteBlock");
         const noteText = document.getElementById("noteText");
-        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent);
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent) || window.innerWidth <= 330;
+        const langCode = "[$langCode]"
+        const noteLabel = langCode == "zh" ? "注:" : "Note:";
         const dFootnote = "[$dFootnote]";
         const mFootnote = "[$mFootnote]";
         const footnote = isMobile ? mFootnote : dFootnote;
 
         if (!isMobile) {
-            container.style.width = "[$dWidth]px";
-            container.style.marginLeft = "[$dMargin-left]px";
-            placeholder.style.cssText = "width: 1px; height: 1px; position: absolute;";
-            dashboard.style.display = "block";
-        } else {
-            noteBlock.style.marginLeft = "[$mMargin-left]px";
-            dashboard.style.display = "none";
+            placeholder.style.display = "none";
+            dashboard.style.cssText = "display: block; width: [$dWidth]px; height: [$dHeight]px";
         }
 
         loadFooter();
 
         function loadFooter() {
-            
+
             if (footnote) {
-                const noteFont = isMobile ? 12 : 14;
-                const noteHeight = isMobile ? 30 : 60;
-                const totalHeight = isMobile ? ([$mHeight] + noteHeight) : ([$dHeight]);
-                container.style.height = totalHeight + "px";
-                noteBlock.style.height = noteHeight + "px";
-                noteBlock.style.fontSize = noteFont + "px";
-                noteBlock.style.display = "flex";
-                noteText.style.display = "flex";
-                footer.innerHTML += " " + footnote;
-            } else {
-                const normalHeight = isMobile ? ([$mHeight]) : ([$dHeight]);
-                container.style.height = normalHeight + "px";
+
+                if (!isMobile) {
+                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 60px; margin-left: 15px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; padding-top: 15px; justify-content: left; font-size: 14px; position: absolute; bottom: 0; z-index: 999;";
+                    noteText.innerHTML = noteLabel;
+                    footer.innerHTML += dFootnote;
+                } else {
+                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 30px; margin-left: 15px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; padding-top: 10px; justify-content: left; font-size: 12px; overflow: visible;";
+                    noteText.innerHTML = noteLabel;
+                    footer.innerHTML += mFootnote;
+                }
+
             }
+
         }
 
         let retryCount = 0;
