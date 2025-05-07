@@ -1,10 +1,8 @@
 <body>
     <div id="container">
-        <img id="placeholder" style="width: 100%; height: 100%;"
-            src="https://1drv.ms/i/c/cda7c9b49e89a535/IQSrhkMIr5T_S5KCtWsympCBAVyh5y5mHEG777702Z2XRuc"
-            onerror="reloadImage(this)" onload="clearBg()">
-        <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen
-            src="https://app.powerbi.com/view?r=eyJrIjoiMTk4YjkwNWQtZWVlYi00OTZiLTg4ZTgtYmM3ZWFmNDVhOWI1IiwidCI6IjdjMDM5NTM0LThlNDYtNDMxYy1hODRjLWMzMDkyYTQzODRmOCIsImMiOjEwfQ%3D%3D&pageName=a1625466f7d3fcd73988">
+        <img id="placeholder" style="width: 100%; height: 100%;" src="[$imgsrc]" onerror="reloadImage(this)"
+            onload="clearBg()">
+        <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen src="[$dashsrc]">
         </iframe>
     </div>
     <div id="noteBlock" style="display: none;">
