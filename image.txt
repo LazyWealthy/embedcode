@@ -41,11 +41,11 @@
             if (footnote) {
 
                 if (!isMobile) {
-                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 60px; margin-left: 15px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; padding-top: 15px; justify-content: left; font-size: 14px; overflow: visible;";
+                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 60px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; padding-top: 15px; justify-content: left; font-size: 14px; position: absolute; bottom: 0;";
                     noteText.innerHTML = noteLabel;
                     footer.innerHTML += dFootnote;
                 } else {
-                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 30px; margin-left: 15px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; padding-top: 10px; justify-content: left; font-size: 12px; overflow: visible;";
+                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 30px; margin-left: 15px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; padding-top: 10px; justify-content: left; font-size: 12px; position: absolute; bottom: 0;";
                     noteText.innerHTML = noteLabel;
                     footer.innerHTML += mFootnote;
                 }
