@@ -37,9 +37,7 @@
         if (!isMobile) {
             placeholder.src = imgsrc;
         } else {
-            if (mobImg) {
-                mobImg ? placeholder.src = mobImg : placeholder.src = imgsrc;
-            }
+            mobImg ? placeholder.src = mobImg : placeholder.src = imgsrc;
         }
 
         function loadFooter() {
