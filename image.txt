@@ -38,7 +38,7 @@
             placeholder.src = imgsrc;
         } else {
             if (mobImg) {
-                placeholder.src = mobImg;
+                mobImg ? placeholder.src = mobImg : placeholder.src = imgsrc;
             }
         }
 
