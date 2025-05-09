@@ -1,12 +1,12 @@
 <body>
     <div id="container">
         <img id="placeholder" style="display: none; width: 100%; height: 100%;" onerror="reloadImage(this)">
-        <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen>
-        </iframe>
+        <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen></iframe>
+        <div id="noteBlock" style="display: none;">
+            <b id="noteText"></b>&nbsp;<span id="footer"></span>
+        </div>
     </div>
-    <div id="noteBlock" style="display: none;">
-        <b id="noteText"></b>&nbsp;<span id="footer"></span>
-    </div>
+
 
     <style>
         html,
@@ -54,11 +54,11 @@
             if (footnote) {
 
                 if (!isMobile) {
-                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 60px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 14px; position: absolute; bottom: 0; z-index: 999;";
+                    noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 60px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 14px; position: absolute; bottom: 0; z-index: 999;";
                     noteText.innerHTML = noteLabel;
                     footer.innerHTML += dFootnote;
                 } else {
-                    noteBlock.style.cssText = "display: flex; width: calc(100% - 30px); height: auto; min-height: 30px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 12px; overflow: visible;";
+                    noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 30px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 12px; overflow: visible;";
                     noteText.innerHTML = noteLabel;
                     footer.innerHTML += mFootnote;
                 }
