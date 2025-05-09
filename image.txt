@@ -1,55 +1,6 @@
-<!-- Alt Text not provided be cause the embed loads too slow for SEO -->
-<!-- Modify .txt template from GitHub (Can't use Wix as URL changes every new file, Github slower by 300ms) -->
-<!--Blog Inner Text: 290px (15px margin) | Hub Inner Text: 280px (15px margin)-->
-<!--Blog Div: 670px | Hub Div: 670px (Desktop); Hub Div: 280px (Mobile)-->
-<!--Blog Settings: calc(100%-30px); margin-left: 15px;-->
-<!--Hub Desktop Settings: calc(100%-30px); margin-left: 15px;-->
-<!--Hub Mobile Settings: calc(100%-0px); margin-left: 0px;-->
-<!-- https://raw.githubusercontent.com/LazyWealthy/embedcode/refs/heads/main/image.txt -->
-
-
-<body>
-    <div id="container" title=""
-        style="width: calc(100% - 30px); margin-left: 15px; min-height: 250px; background: #F6F6F6; border-radius:10px; display: block;">
-    </div>
-
-    <script>
-        async function fetchAndExecuteScript() {
-            try {
-                const response = await fetch("https://raw.githubusercontent.com/LazyWealthy/embedcode/refs/heads/main/image.txt");
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-                let updatedScript = await response.text();
-                const param = {
-                    "[$imgsrc]": "https://1drv.ms/i/c/cda7c9b49e89a535/IQREdCukxqzISrLERTbiT0LvAdZRkKFTXvBEYppAFY9z7bY",
-                    "[$mobImg]": "",
-                    "[$dFootnote]": "",
-                    "[$mFootnote]": "",
-                    "[$langCode]": "en"
-                };
-                Object.entries(param).forEach(([search, replace]) => updatedScript = updatedScript.replaceAll(search, replace));
-                // console.log("updatedScript", updatedScript);
-                document.getElementById("container").innerHTML = updatedScript;
-                document.querySelectorAll("#container script").forEach(script => {
-                    const newScript = document.createElement("script");
-                    newScript.textContent = script.textContent;
-                    document.body.appendChild(newScript);
-                });
-            } catch (error) {
-                console.error("Error loading or executing script:", error);
-            }
-        }
-
-        fetchAndExecuteScript();
-    </script>
-</body>
-
-<!--Server Side Uni Code-->
-
 <body>
     <div id="container">
-        <img id="placeholder" style="width: 100%; height: 100%;" src="[$imgsrc]" onerror="reloadImage(this)"
-            onload="clearBg()">
+        <img id="placeholder" style="width: 100%; height: 100%;" onerror="reloadImage(this)" onload="clearBg()">
     </div>
     <div id="noteBlock" style="display: none;">
         <b id="noteText"></b>&nbsp;<span id="footer"></span>
@@ -75,6 +26,7 @@
         const noteBlock = document.getElementById("noteBlock");
         const noteText = document.getElementById("noteText");
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent) || window.innerWidth <= 330;
+        const imgsrc = "[$imgsrc]";
         const mobImg = "[$mobImg]";
         const langCode = "en"
         const noteLabel = langCode == "zh" ? "注:" : "Note:";
@@ -82,7 +34,9 @@
         const mFootnote = "[$mFootnote]";
         const footnote = isMobile ? mFootnote : dFootnote;
 
-        if (isMobile) {
+        if (!isMobile) {
+            placeholder.src = imgsrc;
+        } else {
             if (mobImg) {
                 placeholder.src = mobImg;
             }
