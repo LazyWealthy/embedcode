@@ -37,7 +37,7 @@
         const mobImg = "[$imgsrc]";
         const langCode = "[$langCode]"
         const logoText = langCode == "zh" ? "懶人盯盤" : "LazyWealthy";
-        const noteLabel = langCode == "zh" ? "注:" : "Note:";
+        const noteLabel = langCode == "zh" ? "注: " : "Note: ";
         const dFootnote = "[$dFootnote]";
         const mFootnote = "[$mFootnote]";
         const footnote = isMobile ? mFootnote : dFootnote;
