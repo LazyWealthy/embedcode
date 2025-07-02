@@ -65,7 +65,7 @@
                 } else {
                     noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 30px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 12px; overflow: visible;";
                     noteText.innerHTML = logoText;
-                    footer.innerHTML += noteLabel + dFootnote;
+                    footer.innerHTML += noteLabel + mFootnote;
                 }
 
             }
