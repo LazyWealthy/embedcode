@@ -2,12 +2,12 @@
     <div id="container">
         <img id="placeholder" style="display: none; width: 100%; height: 100%;" onerror="reloadImage(this)">
         <div id="wall"
-            style="width: 100%; height: 100%; color: #00000000; background: #00000000; position: absolute; z-index: 2; overflow: auto;">
+            style="width: 100%; height: 100%; color: #00000000; background: #00000050; position: absolute; z-index: 2; overflow: auto;">
             <div style="height: 200%;">Login for full access</div>
         </div>
         <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen></iframe>
         <div id="noteBlock" style="display: none;">
-            <b id="noteText"></b>&nbsp;<span id="footer"></span>
+            <b id="noteText" style="color: #999189; margin-right: 12px;"></b><span id="footer"></span>
         </div>
     </div>
 
@@ -36,6 +36,7 @@
         const dashSrc = "[$dashsrc]";
         const mobImg = "[$imgsrc]";
         const langCode = "[$langCode]"
+        const logoText = langCode == "zh" ? "懶人盯盤" : "LazyWealthy";
         const noteLabel = langCode == "zh" ? "注:" : "Note:";
         const dFootnote = "[$dFootnote]";
         const mFootnote = "[$mFootnote]";
@@ -59,12 +60,12 @@
 
                 if (!isMobile) {
                     noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 60px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 14px; position: absolute; bottom: 0; z-index: 999;";
-                    noteText.innerHTML = noteLabel;
-                    footer.innerHTML += dFootnote;
+                    noteText.innerHTML = logoText;
+                    footer.innerHTML += noteLabel + dFootnote;
                 } else {
                     noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 30px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 12px; overflow: visible;";
-                    noteText.innerHTML = noteLabel;
-                    footer.innerHTML += mFootnote;
+                    noteText.innerHTML = logoText;
+                    footer.innerHTML += noteLabel + dFootnote;
                 }
 
             }
