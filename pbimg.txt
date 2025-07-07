@@ -36,7 +36,8 @@
         const dashboard = document.getElementById("dashboard");
         const noteBlock = document.getElementById("noteBlock");
         const noteText = document.getElementById("noteText");
-        const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent) || window.innerWidth <= 330;
+        // const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent) || window.innerWidth <= 330;
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent) || window.innerWidth <= 330;
         const dashSrc = "[$dashsrc]";
         const mobImg = "[$imgsrc]";
         const langCode = "[$langCode]"
