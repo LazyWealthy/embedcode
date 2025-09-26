@@ -40,12 +40,15 @@
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) || window.innerWidth <= 330;
         const dashSrc = "[$dashsrc]";
         const mobImg = "[$imgsrc]";
+        const altText = "[$altText]";
         const langCode = "[$langCode]"
         const logoText = langCode == "zh" ? "懶人盯盤" : "LazyWealthy";
         const noteLabel = langCode == "zh" ? "注: " : "Note: ";
         const dFootnote = "[$dFootnote]";
         const mFootnote = "[$mFootnote]";
         const footnote = isMobile ? mFootnote : dFootnote;
+
+        placeholder.alt = altText;
 
         if (!isMobile) {
             dashboard.src = dashSrc;
@@ -101,6 +104,7 @@
         };
 
         function popUp() {
+            wallDiv.color = "#00000070";
             window.parent.postMessage(
                 { type: "showPopUp" },
                 "*"
