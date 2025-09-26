@@ -28,11 +28,14 @@
         const isMobile = /iPhone|Android/i.test(navigator.userAgent) && !/iPad|Tablet/i.test(navigator.userAgent) || window.innerWidth <= 330;
         const imgsrc = "[$imgsrc]";
         const mobImg = "[$mobImg]";
-        const langCode = "en"
+        const altText = "[$altText]";
+        const langCode = "[$langCode]"
         const noteLabel = langCode == "zh" ? "注:" : "Note:";
         const dFootnote = "[$dFootnote]";
         const mFootnote = "[$mFootnote]";
         const footnote = isMobile ? mFootnote : dFootnote;
+
+        placeholder.alt = altText;
 
         if (!isMobile) {
             placeholder.src = imgsrc;
