@@ -6,7 +6,7 @@
         <div id="wall" style="width: 100%; height: 100%; font-family: 'Open Sans', sans-serif; font-size: 28px; text-align: center;
                display: flex; align-items: center; justify-content: center;
                color: #00000000; background: #00000000; position: absolute;
-               z-index: 2; overflow: auto; border-radius: 10px;">
+               z-index: 2; overflow: auto; border-radius: 5px;">
             <div>Login for full access</div>
         </div>
         <iframe id="dashboard" style="display: none;" frameborder="0" allowfullscreen></iframe>
