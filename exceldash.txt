@@ -71,11 +71,11 @@
             container.style.removeProperty("min-height");
 
             if (!isMobile) {
-                noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 60px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 14px; position: absolute; bottom: 0; z-index: 999;";
+                noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 10px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 10px; position: absolute; bottom: 0; z-index: 999;";
                 noteText.innerHTML = logoText;
                 footer.innerHTML += dFootnote === "" ? "" : noteLabel + dFootnote;
             } else {
-                noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 30px; margin-top: 10px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 12px; overflow: visible;";
+                noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 10px; margin-top: 10px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 10px; overflow: visible;";
                 noteText.innerHTML = logoText;
                 footer.innerHTML += mFootnote === "" ? "" : noteLabel + mFootnote;
             }
