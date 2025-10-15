@@ -69,6 +69,7 @@
         function loadFooter() {
 
             container.style.removeProperty("min-height");
+            container.style.background = "#ffffff";
 
             if (!isMobile) {
                 noteBlock.style.cssText = "display: flex; width: 100%; height: auto; min-height: 30px; margin-left: 0px; background: #fff; color: #000; font-family: 'Open Sans', sans-serif; align-items: center; justify-content: left; font-size: 14px; position: absolute; bottom: 0; z-index: 999;";
