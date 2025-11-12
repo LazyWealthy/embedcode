@@ -1,0 +1,138 @@
+<body>
+    <div id="container" class="subsBox"
+        style="min-height: 170px; background: #f7f7f7; border-radius:10px; display: block; padding: 20px; box-sizing: border-box; font-family: open-sans, sans-serif;">
+        <div id="box">
+            <strong id="mainTitle" style="font-weight:700; font-size:24px; color: #3f7652">
+                <span>Proven Trading Tips Straight to Your Inbox</span>
+            </strong>
+
+            <p id="subTitle" style="margin-bottom: 20px; color: #272624;">
+                Get access to exclusive tips, strategies and top stocks.
+            </p>
+
+            <form onsubmit="event.preventDefault(); passInfo();"
+                style="display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;">
+
+                <div
+                    style="flex: 3 1 220px; display: flex; flex-direction: column; min-width: 220px; position: relative;">
+                    <input type="email" id="inputField" name="email" placeholder="e.g., email@example.com"
+                        style="padding: 10px; font-size: 16px; border: 2px solid #3f7652; border-radius: 5px;" required>
+                    <img id="spinner"
+                        src="https://static.wixstatic.com/media/04b848_6c204b683e404ad28bb1c7355f3c8fa6~mv2.gif"
+                        style="position: absolute; width: 30px; height: 30px; margin-top: 5px; display: none; right: 5px" />
+                </div>
+                <div style="flex: 1 1 100px; min-width: 150px;">
+                    <button type="submit" id="btnSubs" class="subscribe-button">
+                        Try It
+                    </button>
+                </div>
+            </form>
+        </div>
+        <style>
+            #container {
+                width: calc(100% - 0px);
+                margin-left: 0px;
+                margin-top: 30px;
+            }
+
+            #box {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .subscribe-button {
+                width: 100%;
+                padding: 8px 20px;
+                font-size: 18px;
+                font-weight: 400;
+                background-color: #cba16e;
+                color: white;
+                border: 2px solid #cba16e;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .subscribe-button:hover {
+                background-color: #316142;
+                border: 2px solid #316142;
+            }
+
+            @media (max-width: 640px) {
+                #container {
+                    width: calc(100% - 30px);
+                    margin-left: 15px;
+                }
+
+                #box {
+                    margin-left: 0px;
+                    margin-right: 0px;
+                }
+
+                #mainTitle {
+                    font-size: 22px;
+                    line-height: 30px;
+                }
+
+                #subTitle {
+                    line-height: 24px;
+                }
+
+                form {
+                    margin-bottom: 10px;
+                }
+
+                form>div:last-child {
+                    margin-top: 5px;
+                }
+            }
+        </style>
+
+        <script>
+            const container = document.getElementById("container");
+            const spinner = document.getElementById("spinner");
+
+            function passInfo() {
+                const inputValue = document.getElementById("inputField").value;
+                window.parent.postMessage(
+                    { type: "passInfo", value: inputValue },
+                    "*"
+                );
+                if (spinner) {
+                    spinner.style.display = "inline-block";
+                    setTimeout(() => {
+                        spinner.style.display = "none";
+                        inputField.value = "";
+                    }, 800);
+                }
+            }
+
+            // Send a message to the parent
+            window.parent.postMessage(
+                { type: "requestStatusFrSubsBox" },
+                "*"
+            );
+
+            // Listen for parent’s reply
+            window.addEventListener("message", (event) => {
+                if (event.origin !== "https://www.lazywealthy.com") return;
+                if (event.data.type === "subsBoxText") {
+                    const isLoggedIn = event.data.enable;
+                    const subsBoxText = event.data.detail;
+                    if (isLoggedIn !== "true") {
+                        updateText(subsBoxText);
+                    }
+                }
+            });
+
+            function updateText(subsBoxText) {
+                document.getElementById("mainTitle").innerHTML = `<span>${subsBoxText.mainTitle}</span>`;
+                document.getElementById("subTitle").textContent = subsBoxText.subTitle;
+                document.getElementById("inputField").placeholder = subsBoxText.placeholder;
+                document.getElementById("btnSubs").textContent = subsBoxText.btnTxt;
+            }
+
+        </script>
+
+    </div>
+</body>
