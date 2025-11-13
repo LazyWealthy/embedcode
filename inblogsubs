@@ -91,6 +91,7 @@
         <script>
             const container = document.getElementById("container");
             const spinner = document.getElementById("spinner");
+            const iFrameIndex = Number("[$iframeNum]");
 
             function passInfo() {
                 const inputValue = document.getElementById("inputField").value;
@@ -109,7 +110,7 @@
 
             // Send a message to the parent
             window.parent.postMessage(
-                { type: "requestStatusFrSubsBox", iframeNum: "[$iframeNum]" },
+                { type: "requestStatusFrSubsBox", iframeNum: iFrameIndex },
                 "*"
             );
 
