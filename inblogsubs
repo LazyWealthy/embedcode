@@ -109,7 +109,7 @@
 
             // Send a message to the parent
             window.parent.postMessage(
-                { type: "requestStatusFrSubsBox" },
+                { type: "requestStatusFrSubsBox", iframeNum: "[$iframeNum]" },
                 "*"
             );
 
